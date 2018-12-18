@@ -1,0 +1,7 @@
+---
+applications:
+- name:    MyHRSupport-Dialogflow
+  random-route: true
+  memory:  1024M
+  health-check-type: http
+  health-check-http-endpoint: /health/ping

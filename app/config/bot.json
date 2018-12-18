@@ -1,0 +1,25 @@
+{
+    "rainbow": {
+        "host": "sandbox.openrainbow.com",
+        "mode": "xmpp"
+    },
+    "credentials": {
+        "login": "",             
+        "password": ""
+    },
+    "logs": {
+        "enableConsoleLogs": false,
+        "enableFileLogs": false,
+        "file": {
+            "path": "/var/tmp/rainbowsdk/",
+            "level": "debug"
+        }
+    },
+    "application": {
+        "appID": "",
+        "appSecret": ""
+    },
+    "im": {
+        "sendReadReceipt": false
+    }
+}
