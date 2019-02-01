@@ -19,22 +19,22 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "cors": "^2.8.4",
-    "dialogflow": "^0.7.0",
-    "express": "^4.16.2",
+    "cors": "^2.8.5",
+    "dialogflow": "^0.8.0",
+    "express": "^4.16.4",
     "rainbow-node-sdk": "^1.51.3",
     "uuid": "^3.3.2",
-    "winston": "^2.4.0"
+    "winston": "^3.2.1"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
+    "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "chai-spies": "^1.0.0",
-    "eslint": "^4.18.1",
+    "eslint": "^4.19.1",
     "eslint-plugin-node": "^5.2.1",
     "istanbul": "^0.4.5",
-    "nyc": "^11.5.0",
-    "sinon": "^4.3.0",
+    "nyc": "^11.9.0",
+    "sinon": "^4.5.0",
     "sinon-chai": "^2.14.0"
   },
   "engines": {
