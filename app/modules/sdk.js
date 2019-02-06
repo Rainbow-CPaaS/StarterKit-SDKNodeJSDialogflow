@@ -6,7 +6,7 @@ const logger = require('./logger');
 const LOG_ID = "STARTER/SDKN - ";
 
 class SDK {
-    
+
     constructor() {
         logger.log("debug", LOG_ID + "constructor()");
         this.nodeSDK = null;
@@ -16,13 +16,13 @@ class SDK {
     start(bot, argv) {
         return new Promise((resolve) => {
 
-            if(argv.length >= 4) {
+            if (argv.length >= 4) {
                 bot.credentials.login = argv[2];
                 bot.credentials.password = argv[3];
-                logger.log("info", LOG_ID + "using " + bot.credentials.login  + " (forced by CLI)");
+                logger.log("info", LOG_ID + "using " + bot.credentials.login + " (forced by CLI)");
             }
 
-             // Start the SDK
+            // Start the SDK
             this.nodeSDK = new NodeSDK(bot);
 
             this.nodeSDK.events.on('rainbow_onmessagereceived', (message) => {
@@ -30,21 +30,21 @@ class SDK {
                 logger.log("debug", LOG_ID + "on message received");
 
                 // Do not deal with messages coming from the bot loaded several times
-                if(!message.cc) {
+                if (!message.cc) {
 
                     // Send manually a 'read' receipt to the sender
                     this.nodeSDK.im.markMessageAsRead(message);
 
-                    if(this.dialogflow) {
+                    if (this.dialogflow) {
 
                         logger.log("info", LOG_ID + "Dialogflow is configured. Use it to understand the message");
 
                         // Send an answer the message to Dialogflow
-                        this.dialogflow.sendMessage(message.content, message.conversation.id).then( (answer) => {
+                        this.dialogflow.sendMessage(message.content, message.conversation.id, message.lang).then((answer) => {
 
                             let returnMessage = "";
 
-                            if(answer.action) {
+                            if (answer.action) {
 
                                 // TODO: put your own logic here...
                                 switch (answer.action) {
@@ -57,17 +57,17 @@ class SDK {
                             }
 
                             // Give the answer from Dialogflow
-                            if(message.type === "chat") {
-                                this.nodeSDK.im.sendMessageToJid(returnMessage, message.fromJid);
+                            if (message.type === "chat") {
+                                this.nodeSDK.im.sendMessageToJid(returnMessage, message.fromJid, message.lang, answer.content);
                             } else if (message.type === "groupchat") {
-                                this.nodeSDK.im.sendMessageToBubbleJid(returnMessage, message.fromBubbleJid);
+                                this.nodeSDK.im.sendMessageToBubbleJid(returnMessage, message.fromBubbleJid, message.lang, answer.content);
                             }
                         });
 
                     } else {
                         logger.log("info", LOG_ID + "dialogflow not configured / simple answer");
 
-                        if(message.type === "chat") {
+                        if (message.type === "chat") {
                             this.nodeSDK.im.sendMessageToJid("Hello!, I'm a simple bot. I'm configured to answer always like this", message.fromJid);
                         } else if (message.type === "groupchat") {
                             this.nodeSDK.im.sendMessageToBubbleJid("Hello!, I'm a simple bot. I'm configured to answer always like this", message.fromBubbleJid);
@@ -76,7 +76,7 @@ class SDK {
                 } else {
                     logger.log("warn", LOG_ID + "on message received from self / do not answer");
                 }
-                
+
             });
 
             this.nodeSDK.start().then(() => {
@@ -86,7 +86,7 @@ class SDK {
         });
     }
 
-    configuredialogflow (_dialogflow) {
+    configuredialogflow(_dialogflow) {
         this.dialogflow = _dialogflow;
     }
 
