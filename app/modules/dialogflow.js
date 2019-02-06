@@ -56,7 +56,13 @@ class Dialogflow {
 
                     // retrieve markdown content if available
                     let entry = result.fulfillmentMessages.find(item => ["payload"].includes(item.message));
-                    let content = (entry && entry.payload && entry.payload.fields) ? entry.payload.fields.markdown.stringValue : null;
+                    let content = (entry &&
+                         entry.payload &&
+                          entry.payload.fields &&
+                          entry.payload.fields.rainbow &&
+                          entry.payload.fields.rainbow.structValue &&
+                          entry.payload.fields.rainbow.structValue.fields &&
+                          entry.payload.fields.rainbow.structValue.fields.text ) ? entry.payload.fields.rainbow.structValue.fields.text.stringValue : null;
 
                     logger.log("info", LOG_ID + "sendMessage() - text received: " + result.fulfillmentText);
 

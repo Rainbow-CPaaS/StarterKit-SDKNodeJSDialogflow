@@ -65,7 +65,16 @@ Click on the gear in order to access to the agent **settings**, go to the Google
 
 Please follow the tutorial [How to Setup DialogFlow V2 Authentication Programmatically with node.js](https://medium.com/@tzahi/how-to-setup-dialogflow-v2-authentication-programmatically-with-node-js-b37fa4815d89) in order to retrieve your project authentication json file to be associated to the environment variable **GOOGLE_APPLICATION_CREDENTIALS**
 
+## Custom Payload
 
+In order to support markdown rendering into the Rainbow UCaaS client, you may use a specific **Response** *Custom payload*
+
+```json
+"rainbow": {
+  	"text": "<Your Markdown Response - see hub documentation for limitations>",
+  	"type": "markdown"
+  }
+```
 
 ## Server API
 
