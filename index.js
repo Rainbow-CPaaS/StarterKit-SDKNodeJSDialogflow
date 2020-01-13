@@ -9,7 +9,17 @@ const router = require('./app/modules/router');
 const Dialogflow = require('./app/modules/dialogflow');
 
 // Load configuration
-const bot = require("./app/config/bot.json");
+//const bot = require("./app/config/bot.json");
+
+const json = require('comment-json');
+const fs = require('fs');
+const botfile = fs.readFileSync("./app/config/bot.json");
+let txt = botfile.toString();
+let bot = json.parse(txt);
+
+json.stringify(bot, null, 2);
+
+
 const defaultServer = require("./app/config/router.json");
 
 const LOG_ID = "STARTER/INDX - ";
