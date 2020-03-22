@@ -63,7 +63,7 @@ Enter a name and click on **Create**.
 
 Click on the gear in order to access to the agent **settings**, go to the Google project space and click on **Service Account** email, you will be redirected to the **IAM** dashboard.
 
-Please follow the tutorial [How to Setup DialogFlow V2 Authentication Programmatically with node.js](https://medium.com/@tzahi/how-to-setup-dialogflow-v2-authentication-programmatically-with-node-js-b37fa4815d89) in order to retrieve your project authentication json file to be associated to the environment variable **GOOGLE_APPLICATION_CREDENTIALS**
+Please follow the tutorial [How to Setup DialogFlow V2 Authentication Programmatically with node.js](https://medium.com/@tzahi/how-to-setup-dialogflow-v2-authentication-programmatically-with-node-js-b37fa4815d89), chapter **Setting up Service Account** in order to retrieve your project authentication json file to be associated to the environment variable **GOOGLE_APPLICATION_CREDENTIALS**
 
 ## Custom Payload
 
