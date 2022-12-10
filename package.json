@@ -22,7 +22,7 @@
     "comment-json": "^2.4.1",
     "cors": "^2.8.5",
     "dialogflow": "^1.1.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "rainbow-node-sdk": "^1.65.2",
     "uuid": "^3.3.3",
     "winston": "^3.2.1"
